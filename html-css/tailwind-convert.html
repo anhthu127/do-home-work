@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="styles/style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Figma land</title>
+  </head>
+  <body>
+    <div class="md:bg-bgImage md:bg-white md:bg-cover md:w-full">
+      <div class="flex pb-48 pl-6 pr-6 justify-between w-[80%]">
+        <div class="desktop-menu w-[50%] md:hidden">
+          <a class="menu-item">Home</a>
+          <a class="menu-item">Product</a>
+          <a class="menu-item">Pricing</a>
+          <a class="menu-item">About</a>
+          <a class="menu-item">Contact</a>
+        </div>
+        <img class="top-header-logo" src="./images/logo.svg" />
+        <img class="burger-menu md:hidden" src="./images/VectorBurger.svg" />
+        <div class="desktop-contact w-[20%] md:hidden sm:visible">
+          <img src="./images/VectorFacebook.svg" />
+          <img src="./images/VectorLinkedin.svg" />
+          <img src="./images/VectorSkype.svg" />
+        </div>
+      </div>
+
+      <div class="top-body">
+        <h2 class="title">The best products start with Figma</h2>
+        <h4 class="sub-title">Most calendars are designed for teams.</h4>
+      </div>
+      <div class="wrap-btn">
+        <button class="btn">Try For Free</button>
+      </div>
+    </div>
+    <div class="wrap-feature">
+      <h2 class="feature-title">Features</h2>
+      <h4 class="sub-feature">Most calendars are designed for teams.</h4>
+      <div class="img-screen">
+        <img class="screen" src="./images/FeatureScreen.png" />
+        <img class="play-btn" src="./images/playbtn.svg" />
+      </div>
+      <div class="wrap-open-type">
+        <img class="img-open-type" src="./images/OpenType.svg" />
+        <h3 class="open-type">OpenType features Variable fonts</h3>
+        <h4 class="sub-open-type">
+          Slate helps you see how many more days you need to work to reach your
+          financial goal.
+        </h4>
+      </div>
+      <div class="wrap-design">
+        <img class="img-design" src="./images/VectorDesign.png" />
+        <h3 class="design">Design with real data</h3>
+        <h4 class="sub-design">
+          Slate helps you see how many more days you need to work to reach your
+          financial goal.
+        </h4>
+      </div>
+      <div class="wrap-fastest">
+        <img class="img-fastest" src="./images/VectorFastest.png" />
+        <h3 class="fastest">Fastest way to take action</h3>
+        <h4 class="sub-fastest">
+          Slate helps you see how many more days you need to work to reach your
+          financial goal.
+        </h4>
+      </div>
+      <div class="wrap-organize">
+        <h2 class="organize">Fastest way to organize</h2>
+        <h4 class="sub-organize">Most calendars are designed for teams.</h4>
+        <button class="btn-organize">Try For Free</button>
+        <img class="img-organize" src="./images/macbook.png" />
+      </div>
+      <div class="wrap-letter">
+        <h3 class="letter-sub-title">At your fingertips</h3>
+        <h2 class="letter-title">Newsletter</h2>
+        <h4 class="letter-content">
+          Most calendars are designed for teams. Slate is designed for
+          freelancers
+        </h4>
+        <img src="./images/letter.png" />
+        <h3 class="letter-subcribe-title">Subscribe to our Newsletter</h3>
+        <span class="letter-subcribe-content"
+          >Available exclusivery on Figmaland</span
+        >
+        <input class="letter-input" placeholder="Your Email" />
+        <button class="btn-letter">Subscribe</button>
+      </div>
+      <div class="wrap-partners">
+        <h2 class="partners-title">Partners</h2>
+        <h4 class="partners-sub-title">
+          Most calendars are designed for teams. Slate is designed for
+          freelancers
+        </h4>
+        <div class="wrap-google">
+          <img src="./images/logos_google.svg" />
+        </div>
+        <div class="wrap-aws">
+          <img src="./images/logos_aws.png" />
+        </div>
+        <div class="wrap-microsoft">
+          <img src="./images/logos_microsoft.png" />
+        </div>
+        <button class="btn-partners">Try For Free</button>
+      </div>
+      <div class="wrap-testimonials">
+        <div class="wrap-ibm-logo">
+          <img src="./images/logos_ibm.svg" />
+        </div>
+        <div></div>
+        <div>
+          <img class="" />
+        </div>
+        <button class="btn-testimonials">More Testimonials</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {},
+        colors: {
+          white: "#FFFFFF",
+          blue: "#2091F9",
+        },
+        borderRadius: {
+          br35: "35px",
+          br5: "5px",
+        },
+        minHeight: {
+          mh850: "850px",
+        },
+        minWidth: {
+          mw20p: "20%",
+        },
+        backgroundImage: {
+          bgImage: "url('./images/background.png')",
+        },
+      },
+    };
+  </script>
+</html>
