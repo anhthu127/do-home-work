@@ -1,4 +1,5 @@
-import connection from "../database";
+import connection from "./mysql-connection";
+// TODO: gộp 2 quểy lại thành 1
 
 export const executeQuery = (sqlString: string) => {
   return new Promise((resolve, reject) => {
@@ -9,9 +10,9 @@ export const executeQuery = (sqlString: string) => {
   });
 };
 
-export const executeQueryWParam = async (
+export const executeQueryWParam = async <T>(
   sqlString: string,
-  params: string | string[]
+  params: string | T[]
 ): Promise<any> => {
   return new Promise((resolve, reject) => {
     connection.query(sqlString, [params], (err, data) => {

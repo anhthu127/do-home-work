@@ -1,25 +1,19 @@
 import { RequestHandler } from "express";
 import {
-  addBulkStudentService,
-  addClassService,
-  getClassListService,
-  getStudentListService,
-} from "../services/school-service";
+  addBulkStudentRepo,
+  addClassRepo,
+  getClassListRepo,
+  getStudentListRepo,
+} from "../repositories/school.repository";
+import { commonResponse } from "../utils/common-response";
+
+// TODO: dùng controller handler và common response
 
 export const addClass = async (req, res, next) => {
   const { name } = req.body;
-  try {
-    const result = await addClassService(name);
-    res.status(200).json({
-      status: "success",
-      data: result,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: "success",
-      data: error,
-    });
-  }
+  const result = await addClassRepo(name);
+  res.status(200);
+  res.send(commonResponse(result));
 };
 
 export const addBulkStudent: RequestHandler = async (req, res, next) => {
@@ -30,7 +24,7 @@ export const addBulkStudent: RequestHandler = async (req, res, next) => {
   }
   if (values.length > 0) {
     try {
-      const result = addBulkStudentService(values);
+      const result = addBulkStudentRepo(values);
       res.status(200).json({
         status: "success",
         data: result,
@@ -48,7 +42,7 @@ export const addBulkStudent: RequestHandler = async (req, res, next) => {
 
 export const getStudentList: RequestHandler = async (req, res) => {
   try {
-    const result = await getStudentListService();
+    const result = await getStudentListRepo();
     res.status(200).json({
       status: "success",
       data: result,
@@ -63,7 +57,7 @@ export const getStudentList: RequestHandler = async (req, res) => {
 
 export const getClassList: RequestHandler = async (req, res) => {
   try {
-    const result = await getClassListService();
+    const result = await getClassListRepo();
     res.status(200).json({
       status: "success",
       data: result,

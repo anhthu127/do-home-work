@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { healthCheckController } from "../controller";
-import { addBulkStudent, getStudentList } from "../controller/school";
-import classRouter from "./class";
-import itemRouter from "./item";
+import { healthCheckController } from "../controllers/item.controller";
+import { addBulkStudent, getStudentList } from "../controllers/school.controller";
+import classRouter from "./class.router";
+import itemRouter from "./item.router";
 const router = Router();
 
 router.get("/health-check", healthCheckController);

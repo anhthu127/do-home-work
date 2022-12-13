@@ -1,12 +1,10 @@
 import { RequestHandler } from "express";
-
+// TODO:thêm validate request
 export const healthCheckController: RequestHandler = (req, res, next) => {
   res.json({ message: "Ok" });
 };
 const items = [];
 export const itemRegistration: RequestHandler = (req, res, next) => {
-  console.log("--------    ", req);
-
   const { price, name } = req.body;
   items.push({
     price,

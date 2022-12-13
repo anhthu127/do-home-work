@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "node app/database/index",
+    "generate": "node app/database/mysql-migration",
     "start": "nodemon --watch './**/*.ts' --exec ts-node index"
   },
   "author": "",
