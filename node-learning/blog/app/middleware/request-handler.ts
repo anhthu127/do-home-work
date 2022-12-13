@@ -1,9 +1,5 @@
 import { commonResponse } from "../utils/common-response";
 
-// export const controllerHandler = (error, req, res, next) => {
-
-// }
-
 export const errorHandler = (error, req, res, next) => {
     if (typeof error === 'string') {
       res.status(400);

@@ -1,61 +1,77 @@
 import { RequestHandler } from "express";
-import connection from "../database";
+import {
+  addBulkStudentService,
+  addClassService,
+  getClassListService,
+  getStudentListService,
+} from "../services/school-service";
 
 export const addClass = async (req, res, next) => {
   const { name } = req.body;
-  connection.query(
-    "INSERT INTO classes (name) VALUES (?) ",
-    [name],
-    (err, data, fields) => {
-      if (err) return res.json(err);
-      res.status(200).json({
-        status: "success",
-        data: data,
-      });
-    }
-  );
+  try {
+    const result = await addClassService(name);
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "success",
+      data: error,
+    });
+  }
 };
 
 export const addBulkStudent: RequestHandler = async (req, res, next) => {
   const { students, classId } = req.body;
-  const sqlQuery = "INSERT INTO  students (name, classId) VALUES ?";
   const values = [];
   for (const student of students) {
     values.push([student, classId]);
   }
   if (values.length > 0) {
-    connection.query(sqlQuery, [values], (err, data) => {
-      if (err) return res.json(err);
+    try {
+      const result = addBulkStudentService(values);
       res.status(200).json({
         status: "success",
-        data: data,
+        data: result,
       });
-    });
+    } catch (error) {
+      res.status(400).json({
+        status: "success",
+        data: error,
+      });
+    }
   } else {
     res.json({ message: "Student data is required" });
   }
 };
 
 export const getStudentList: RequestHandler = async (req, res) => {
-  const sqlQuery =
-    "SELECT  s.name, s.id , s.classId FROM school.students as s LEFT JOIN (select count(stu.id) as sum ,stu.classId as classId from school.students  as stu group by stu.classId ) counter On counter.classId= s.classId order by counter.sum desc;";
-  connection.query(sqlQuery, (err, data) => {
-    if (err) return res.json(err);
+  try {
+    const result = await getStudentListService();
     res.status(200).json({
       status: "success",
-      data: data,
+      data: result,
     });
-  });
+  } catch (error) {
+    res.status(400).json({
+      status: "success",
+      data: error,
+    });
+  }
 };
 
 export const getClassList: RequestHandler = async (req, res) => {
-  const sqlQuery =
-    "select c.*, (select count(*) from students as s where c.id = s.classId) as count from classes as c order by count desc";
-  connection.query(sqlQuery, (err, data) => {
-    if (err) return res.json(err);
+  try {
+    const result = await getClassListService();
     res.status(200).json({
       status: "success",
-      data: data,
+      data: result,
     });
-  });
+  } catch (error) {
+    res.status(400).json({
+      status: "success",
+      data: error,
+    });
+  }
 };
