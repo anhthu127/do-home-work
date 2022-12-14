@@ -1,6 +1,5 @@
-import { executeQuery, executeQueryWParam } from "../database/sql-func";
+import { executeQuery } from "../database/sql-func";
 // TODO:
-// sửa lại 2 làm query thành 1
 // thêm transaction
 // định nghĩa DTO (định nghĩa theo bảng DB)
 // them models hehe (là kiểu của giá trị trả về cho FE)
@@ -8,14 +7,14 @@ import { executeQuery, executeQueryWParam } from "../database/sql-func";
 
 export const addClassRepo= async (className: string) => {
   const sqlQuery = "INSERT INTO classes (name) VALUES (?) ";
-  return await executeQueryWParam(sqlQuery, className);
+  return await executeQuery(sqlQuery, className);
 };
 
 export const addBulkStudentRepo= async (
   students: { classId: string; name: string }[]
 ) => {
   const sqlQuery = "INSERT INTO  students (name, classId) VALUES ?";
-  return await executeQueryWParam(sqlQuery, students);
+  return await executeQuery(sqlQuery, students);
 };
 
 export const getClassListRepo = async () => {

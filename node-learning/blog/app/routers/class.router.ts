@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { addClass, getClassList } from "../controllers/school.controller";
-import { controllerHandler } from "../middlewares/controller-handler.middleware";
+import { ControllerHandler } from "../middlewares/controller-handler.middleware";
 
 const router = Router();
 
-router.post("/class", controllerHandler(addClass));
+router.post("/class", ControllerHandler(addClass));
 router.get("/class", getClassList);
 
 export default router;
