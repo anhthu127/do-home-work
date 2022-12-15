@@ -1,16 +1,31 @@
-// const app = require("express");
 import express from "express";
-import router from "./app/routers/index.router";
-import socketIo, { Server } from "socket.io";
-import * as http from "http";
+import fs from "fs";
 import routers from "./app/routers/index.router";
 import { errorHandler } from "./app/middlewares/request-handler.middleware";
 import cors from "cors";
+import morgan from "morgan";
+import path from "path";
+// sau khi kêst thúc request thì ghi vào file
+// TODO: sign in /out 
+// user role: student || parent 
+// api: parents get childrents (add role)
+// upload file, socket, 
+// viết code và code test bằng postman  
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+// common vs combined 
+app.use(
+  morgan("combined", {
+    stream: fs.createWriteStream(path.join(__dirname, "access.log"), {
+      flags: "a",
+    }),
+  })
+);
 
 for (const router of routers) {
   app.use("/api", router);
@@ -19,5 +34,5 @@ for (const router of routers) {
 app.use(errorHandler);
 const port = process.env.SERVER_PORT || 9000;
 app.listen(port, () => {
-  console.log("server on 9000");
+  console.log(`server on ${port}`);
 });

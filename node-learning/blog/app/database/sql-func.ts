@@ -11,3 +11,20 @@ export const executeQuery = async <T>(
     });
   });
 };
+
+export const executeWithTransaction = <T>(
+  sqlString: string,
+  params: string | T[] = []
+) => {
+  connection.beginTransaction(async (err) => {
+    if (err) return connection.rollback();
+    try {
+      const result = await executeQuery(sqlString, params);
+      if (result) {
+        connection.commit();
+      }
+    } catch (error) {
+      connection.rollback();
+    }
+  });
+};

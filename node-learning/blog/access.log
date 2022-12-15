@@ -1,0 +1,2 @@
+::1 - - [15/Dec/2022:10:12:39 +0000] "GET /api/class HTTP/1.1" 200 889 "-" "PostmanRuntime/7.29.2"
+::1 - - [15/Dec/2022:10:13:05 +0000] "POST /api/student HTTP/1.1" 200 37 "-" "PostmanRuntime/7.29.2"
