@@ -26,7 +26,7 @@ export const addBulkStudentController: RequestHandler = async (req, res) => {
     res.send(commonResponse(result));
   } else {
     res.json({ message: "Student data is required" });
-  }
+  } 
 };
 
 export const getStudentListController: RequestHandler = async (req, res) => {
