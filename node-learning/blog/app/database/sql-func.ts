@@ -1,4 +1,5 @@
 import connection from "./mysql-connection";
+import mysql from "mysql";
 
 export const executeQuery = async <T>(
   sqlString: string,
@@ -27,4 +28,8 @@ export const executeWithTransaction = <T>(
       connection.rollback();
     }
   });
+};
+
+export const printQuery = (sqlString: string, params) => {
+  return console.log(mysql.format(sqlString, params));
 };

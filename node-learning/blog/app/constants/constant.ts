@@ -5,3 +5,7 @@ export const DB_CONFIG = {
   database: process.env.MYSQL_DATABASE || "school",
   port: Number(process.env.MYSQL_PORT) || 3306,
 };
+export enum Role {
+  Student,
+  Parents,
+}

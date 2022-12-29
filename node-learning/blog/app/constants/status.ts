@@ -15,4 +15,8 @@ export const STATUS = {
     CODE: 500,
     MESSAGE: "unknown-error",
   },
+  EXISTED: {
+    CODE: 301,
+    MESSAGE: "is existed",
+  },
 };

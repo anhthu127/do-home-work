@@ -7,6 +7,7 @@ import {
 import { ControllerHandler } from "../middlewares/controller-handler.middleware";
 import classRouter from "./class.router";
 import itemRouter from "./item.router";
+import authRouter from "./auth.router";
 const router = Router();
 
 router.get("/health-check", healthCheckController);
@@ -14,4 +15,4 @@ router.get("/health-check", healthCheckController);
 router.post("/student", ControllerHandler(addBulkStudentController));
 router.get("/student", ControllerHandler(getStudentListController));
 
-export default [router, classRouter, itemRouter];
+export default [router, classRouter, itemRouter, authRouter];
